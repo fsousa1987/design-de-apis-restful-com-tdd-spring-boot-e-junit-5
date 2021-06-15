@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/books")
 public class BookController {
 
-    private BookService service;
-    private ModelMapper modelMapper;
+    private final BookService service;
+    private final ModelMapper modelMapper;
 
     public BookController(BookService service, ModelMapper mapper) {
         this.service = service;
