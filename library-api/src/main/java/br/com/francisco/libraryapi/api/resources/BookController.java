@@ -33,6 +33,12 @@ public class BookController {
         return modelMapper.map(entity, BookDto.class);
     }
 
+    @GetMapping("{id}")
+    public BookDto get(@PathVariable Long id) {
+        Book book = service.getById(id).orElse(null);
+        return modelMapper.map(book, BookDto.class);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiErrors handleValidationException(MethodArgumentNotValidException ex) {
